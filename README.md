@@ -12,7 +12,7 @@ TGRAM_TOKEN=YOUR_BOT_TOKEN
 You can create a new bot and get its token in under a minute using Telegram's @Botfather, and you can figure out the Group ID of your group by adding Telegram's @RawDataBot to it.
 
 ### Linux + Docker
-Install Docker and Docker-Compose, clone this repository, and then add to your crontab: `*/15 * * * * docker-compose -f path/to/jugger_turnier_check/docker-compose.yml up` As per the compose-file, the `.env` file resides in `path/to/data`, but you can mount volumes from other places at will.
+Install Docker and Docker-Compose, clone this repository, and then add to your crontab: `*/15 * * * * /usr/local/bin/docker-compose -f /path/to/JuggerTunierBot/docker-compose.yml up &>> /var/log/juggerturnierbot.log` As per the compose-file, the `.env` file resides in `path/to/data`, but you can mount volumes from other places at will.
 
 ### Everything else
 
