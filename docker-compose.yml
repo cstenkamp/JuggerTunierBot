@@ -1,0 +1,10 @@
+turnierchecker:
+    container_name: turnierchecker_1
+    build: .
+    restart: on-failure
+    mem_limit: 400m
+    volumes:
+        - ./data/:/opt/data
+
+# pass env-vars when executing: `env $(cat data/.env) docker-compose run -e GROUP_ID -e TGRAM_TOKEN turnierchecker`
+# but with correctly mounted data-dir this is not even necessary
