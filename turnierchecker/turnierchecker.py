@@ -1,4 +1,5 @@
 from time import sleep
+from datetime import datetime
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
@@ -41,6 +42,8 @@ def get_turnament_df():
         href = "https://turniere.jugger.org/"+next(turnament.find_all("td")[1].children)["href"]
         country = next(turnament.find_all("td")[2].children)["title"]
         elems[4] = next(turnament.find_all("td")[4].children)["title"] if len(turnament.find_all("td")) >= 5 and len(turnament.find_all("td")[4]) else None
+        if elems[0] == "Heute":
+            elems[0] = datetime.now().date().strftime("%d.%m.%Y")
         for key, val in zip(all_turnaments.values(), elems+[href,country]):
             key.append(val)
     return pd.DataFrame(all_turnaments)
